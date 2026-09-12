@@ -1,739 +1,1273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KLH & Associates | Civil & Structural Engineering Consultants</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #1d2733;
-            background: #ffffff;
-            line-height: 1.6;
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #162536;
-        }
-
-        .logo span {
-            display: block;
-            font-size: 11px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            color: #66727e;
-            margin-top: -3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #263746;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #526f89;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 620px;
-            display: flex;
-            align-items: center;
-            padding: 80px 7%;
-            background:
-                linear-gradient(rgba(17, 31, 45, 0.82), rgba(17, 31, 45, 0.82)),
-                url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80");
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 72px);
-            line-height: 1.05;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            color: #e3e8ed;
-            margin-bottom: 35px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 14px 25px;
-            background: #ffffff;
-            color: #1b3043;
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 10px;
-            border: 2px solid #ffffff;
-        }
-
-        .button.secondary {
-            background: transparent;
-            color: white;
-        }
-
-        .button:hover {
-            opacity: 0.85;
-        }
-
-        /* GENERAL */
-
-        section {
-            padding: 90px 7%;
-        }
-
-        .section-title {
-            max-width: 750px;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-            color: #172838;
-        }
-
-        .section-title p {
-            color: #5f6c78;
-            font-size: 17px;
-        }
-
-        /* INTRO */
-
-        .intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .intro-text h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
-
-        .intro-text p {
-            color: #5f6c78;
-            margin-bottom: 18px;
-        }
-
-        .intro-image {
-            min-height: 400px;
-            background:
-                linear-gradient(rgba(20, 38, 53, 0.15), rgba(20, 38, 53, 0.15)),
-                url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80");
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* SERVICES */
-
-        .services {
-            background: #f3f5f7;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px 25px;
-            min-height: 170px;
-            border: 1px solid #e2e6e9;
-            transition: transform 0.2s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .service-card h3 {
-            color: #1c3449;
-            margin-bottom: 10px;
-            font-size: 19px;
-        }
-
-        .service-card p {
-            color: #697680;
-            font-size: 14px;
-        }
-
-        /* EXPERIENCE */
-
-        .experience {
-            background: #172838;
-            color: white;
-        }
-
-        .experience .section-title h2 {
-            color: white;
-        }
-
-        .experience .section-title p {
-            color: #d3dce3;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .experience-box {
-            border-top: 2px solid #8095a7;
-            padding-top: 25px;
-        }
-
-        .experience-box h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .experience-box p {
-            color: #d0d8df;
-        }
-
-        /* PROJECTS */
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .project {
-            min-height: 280px;
-            padding: 30px;
-            display: flex;
-            align-items: flex-end;
-            color: white;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .project:nth-child(1) {
-            background-image:
-                linear-gradient(rgba(15,30,43,0.3), rgba(15,30,43,0.8)),
-                url("https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=80");
-        }
-
-        .project:nth-child(2) {
-            background-image:
-                linear-gradient(rgba(15,30,43,0.3), rgba(15,30,43,0.8)),
-                url("https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1000&q=80");
-        }
-
-        .project:nth-child(3) {
-            background-image:
-                linear-gradient(rgba(15,30,43,0.3), rgba(15,30,43,0.8)),
-                url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80");
-        }
-
-        .project h3 {
-            font-size: 22px;
-        }
-
-        /* CONTACT */
-
-        .contact {
-            background: #f3f5f7;
-            text-align: center;
-        }
-
-        .contact p {
-            color: #5f6c78;
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        .contact-button {
-            display: inline-block;
-            background: #172838;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #101c27;
-            color: #cbd4db;
-            padding: 40px 7%;
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        footer p {
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 900px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .intro {
-                grid-template-columns: 1fr;
-            }
-
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            section {
-                padding: 65px 6%;
-            }
-
-            .hero {
-                min-height: 550px;
-                padding: 60px 6%;
-            }
-
-            .hero h1 {
-                font-size: 43px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                flex-direction: column;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KLH Consultancy</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: white;
+    color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.page {
+    width: 94%;
+    max-width: 1250px;
+    margin: 25px auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    min-height: 155px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 15px;
+}
+
+.brand {
+    padding: 8px 10px;
+}
+
+.brand-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #2d5274;
+    font-size: 40px;
+}
+
+.company-description {
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.contact-details {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.header-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding-left: 15px;
+}
+
+.header-image {
+    height: 105px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ddd;
+}
+
+.image1 {
+    background-image:
+    url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80");
+}
+
+.image2 {
+    background-image:
+    url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80");
+}
+
+.image3 {
+    background-image:
+    url("https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=600&q=80");
+}
+
+.image4 {
+    background-image:
+    url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80");
+}
+
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+
+/* =========================
+   LEFT MENU
+========================= */
+
+.sidebar {
+    border: 1px solid #222;
+    padding: 20px;
+    align-self: start;
+    position: sticky;
+    top: 15px;
+    max-height: calc(100vh - 30px);
+    overflow-y: auto;
+}
+
+.sidebar-home {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.sidebar h3 {
+    font-size: 19px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.sidebar li {
+    margin-bottom: 7px;
+}
+
+.sidebar a {
+    color: #111;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.sidebar-link {
+    font-size: 18px;
+    margin-top: 22px;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    border: 1px solid #222;
+}
+
+.section {
+    padding: 42px;
+    border-bottom: 1px solid #222;
+    scroll-margin-top: 20px;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.section-heading {
+    font-size: 31px;
+    font-weight: normal;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.section h3 {
+    font-size: 23px;
+    font-weight: normal;
+    color: #2d5274;
+    margin-top: 35px;
+    margin-bottom: 12px;
+}
+
+.section p {
+    max-width: 950px;
+    margin-bottom: 17px;
+}
+
+.section ul {
+    padding-left: 25px;
+    max-width: 1000px;
+}
+
+.section li {
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home-intro {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 25px;
+    align-items: center;
+}
+
+.home-image {
+    min-height: 320px;
+    background-image:
+    url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.service {
+    border-top: 1px solid #ddd;
+    padding: 30px 0;
+}
+
+.service:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.service-title {
+    font-size: 25px;
+    color: #2d5274;
+    margin-bottom: 15px;
+}
+
+.service strong {
+    display: block;
+    margin-top: 20px;
+}
+
+
+/* =========================
+   PROJECT LISTS
+========================= */
+
+.project-list {
+    columns: 2;
+    column-gap: 55px;
+}
+
+.project-list li {
+    break-inside: avoid;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 35px;
+}
+
+.map {
+    min-height: 260px;
+    border: 1px solid #222;
+    background-image:
+    url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=700&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    font-size: 12px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 15px 0;
+    font-size: 12px;
+    color: #555;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .header {
+        grid-template-columns: 1fr;
+    }
+
+    .header-images {
+        padding-left: 0;
+        margin-top: 15px;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        max-height: none;
+    }
+
+    .home-intro {
+        grid-template-columns: 1fr;
+    }
+
+    .home-image {
+        min-height: 250px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .project-list {
+        columns: 1;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .page {
+        width: 96%;
+    }
+
+    .brand-name {
+        font-size: 31px;
+    }
+
+    .header-images {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .section {
+        padding: 27px;
+    }
+
+    .section-heading {
+        font-size: 27px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION -->
+<div class="page">
 
-    <nav>
-        <div class="logo">
-            KLH & ASSOCIATES
-            <span>Civil & Structural Engineering Consultants</span>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-name">
+            KLH Consultancy
         </div>
 
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+        <div class="company-description">
+            Civil and Structural Engineering Consultants
+        </div>
+
+        <div class="contact-details">
+            Tel: 01732 852212<br>
+            Fax: 01732 852218<br><br>
+            Email: postmaster@klhassociates.co.uk
+        </div>
+
+    </div>
 
 
-    <!-- HERO -->
+    <div class="header-images">
 
-    <header class="hero">
+        <div class="header-image image1"></div>
+        <div class="header-image image2"></div>
+        <div class="header-image image3"></div>
+        <div class="header-image image4"></div>
 
-        <div class="hero-content">
+    </div>
 
-            <h1>
-                Civil & Structural<br>
-                Engineering Consultants
+</header>
+
+
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-home">
+        <a href="#home">HOME</a>
+    </div>
+
+    <h3>SERVICES</h3>
+
+    <ul>
+
+        <li>
+            <a href="#temporary">
+                Temporary Works
+            </a>
+        </li>
+
+        <li>
+            <a href="#rail">
+                Rail
+            </a>
+        </li>
+
+        <li>
+            <a href="#marine">
+                Marine & River Projects
+            </a>
+        </li>
+
+        <li>
+            <a href="#bridges">
+                Bridges & Highways
+            </a>
+        </li>
+
+        <li>
+            <a href="#buildings">
+                Buildings
+            </a>
+        </li>
+
+        <li>
+            <a href="#special">
+                Special Projects & Piling
+            </a>
+        </li>
+
+        <li>
+            <a href="#renewable">
+                Renewable Energy
+            </a>
+        </li>
+
+        <li>
+            <a href="#geotechnical">
+                Geotechnical
+            </a>
+        </li>
+
+        <li>
+            <a href="#management">
+                Project & Construction Management
+            </a>
+        </li>
+
+        <li>
+            <a href="#costs">
+                Estimating, Cost Plans & Value Engineering
+            </a>
+        </li>
+
+        <li>
+            <a href="#contractual">
+                Contractual Consultancy
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="sidebar-link">
+        <a href="#policies">
+            POLICIES
+        </a>
+    </div>
+
+    <div class="sidebar-link">
+        <a href="#contact">
+            CONTACTS
+        </a>
+    </div>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="content">
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section class="section" id="home">
+
+    <div class="home-intro">
+
+        <div>
+
+            <h1 class="section-heading">
+                KLH Consultancy
             </h1>
 
             <p>
-                Practical engineering solutions for complex construction,
-                infrastructure and development projects.
+                KLH Consultancy are consulting Civil and Structural Engineers
+                working nationally and internationally.
             </p>
-
-            <a href="#" class="button">Our Services</a>
-            <a href="#" class="button secondary">Contact Us</a>
-
-        </div>
-
-    </header>
-
-
-    <!-- INTRODUCTION -->
-
-    <section>
-
-        <div class="intro">
-
-            <div class="intro-text">
-
-                <h2>Engineering experience you can rely on</h2>
-
-                <p>
-                    KLH & Associates are consulting Civil and Structural Engineers
-                    working nationally and internationally.
-                </p>
-
-                <p>
-                    Our client base includes construction companies, government
-                    authorities, local authorities, water authorities, industrial
-                    organisations and commercial and private developers.
-                </p>
-
-                <p>
-                    We specialise in resolving difficult engineering schemes by
-                    developing suitable designs while considering construction
-                    sequence, methodology, safety, environmental requirements,
-                    programme and cost.
-                </p>
-
-            </div>
-
-            <div class="intro-image"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICES -->
-
-    <section class="services">
-
-        <div class="section-title">
-
-            <h2>Our Services</h2>
 
             <p>
-                A broad range of civil and structural engineering,
-                construction management and consultancy services.
+                Our client base covers Construction Companies, Government
+                Authorities, Local Authorities, Water Authorities, Industrial
+                Organisations, Commercial and Private Developers.
             </p>
-
-        </div>
-
-
-        <div class="service-grid">
-
-            <div class="service-card">
-                <h3>Temporary Works</h3>
-                <p>
-                    Design and engineering of temporary structures,
-                    construction systems and specialist temporary works.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Rail</h3>
-                <p>
-                    Engineering services for rail infrastructure,
-                    including temporary and permanent works.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Marine & River</h3>
-                <p>
-                    Engineering solutions for marine, river and
-                    waterfront construction projects.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Bridges & Highways</h3>
-                <p>
-                    Engineering and technical services for bridges,
-                    highways and associated infrastructure.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Buildings</h3>
-                <p>
-                    Structural design, renovation, refurbishment,
-                    surveys and investigations.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Special Projects & Piling</h3>
-                <p>
-                    Specialist engineering solutions for unusual,
-                    complex and one-off situations.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Renewable Energy</h3>
-                <p>
-                    Investigation and research into engineering
-                    solutions for renewable energy projects.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Geotechnical</h3>
-                <p>
-                    Site assessment, geotechnical investigations and
-                    interpretation of site investigation information.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Project & Construction Management</h3>
-                <p>
-                    Pre- and post-contract project and construction
-                    management services.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Estimating & Cost Plans</h3>
-                <p>
-                    Cost assessment, estimating, bid management,
-                    procurement and cost planning.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Value Engineering</h3>
-                <p>
-                    Developing economic and safe design solutions
-                    while assessing project costs.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <h3>Contractual Consultancy</h3>
-                <p>
-                    Contractual advice, claims preparation, defence
-                    of claims and expert support.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EXPERIENCE -->
-
-    <section class="experience">
-
-        <div class="section-title">
-
-            <h2>Experience across complex projects</h2>
 
             <p>
-                KLH & Associates has worked across a wide range of
-                civil engineering, infrastructure and construction projects.
+                A large proportion of work is carried out for National and
+                International Construction Companies, where technical expertise
+                and cost effectiveness is an essential aspect of any design.
             </p>
-
-        </div>
-
-
-        <div class="experience-grid">
-
-            <div class="experience-box">
-
-                <h3>Rail Infrastructure</h3>
-
-                <p>
-                    Experience involving Network Rail, London Underground
-                    and Docklands Light Railway, including temporary and
-                    permanent works.
-                </p>
-
-            </div>
-
-
-            <div class="experience-box">
-
-                <h3>Major Infrastructure</h3>
-
-                <p>
-                    Engineering involvement across bridges, highways,
-                    tunnels, marine works and major construction projects.
-                </p>
-
-            </div>
-
-
-            <div class="experience-box">
-
-                <h3>Specialist Engineering</h3>
-
-                <p>
-                    Developing solutions for difficult and unusual
-                    engineering situations where practical experience
-                    is essential.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-
-    <section>
-
-        <div class="section-title">
-
-            <h2>Selected Projects</h2>
 
             <p>
-                Examples of projects undertaken across the UK and internationally.
+                In particular we specialize in the resolving of difficult
+                engineering schemes by development of a suitable design
+                together with sequence of construction, methodology, safety,
+                environmental, time and cost considerations all being taken
+                into account.
             </p>
-
-        </div>
-
-
-        <div class="project-grid">
-
-            <div class="project">
-                <div>
-                    <h3>Rail & Underground</h3>
-                    <p>
-                        London Underground, Docklands Light Railway
-                        and Network Rail projects.
-                    </p>
-                </div>
-            </div>
-
-            <div class="project">
-                <div>
-                    <h3>Marine & River</h3>
-                    <p>
-                        Harbour, jetty, river and waterfront engineering projects.
-                    </p>
-                </div>
-            </div>
-
-            <div class="project">
-                <div>
-                    <h3>Infrastructure</h3>
-                    <p>
-                        Bridges, highways, tunnels and major construction projects.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section class="contact">
-
-        <div class="section-title" style="margin-left:auto;margin-right:auto;">
-
-            <h2>Discuss your next project</h2>
 
             <p>
-                Contact KLH & Associates to discuss your engineering,
-                construction or consultancy requirements.
+                The success of projects has only been achieved by the qualified
+                personnel that work on them and the considerable design and
+                practicable experience available.
             </p>
 
-            <a href="mailto:postmaster@klhassociates.co.uk"
-               class="contact-button">
-                Contact KLH & Associates
-            </a>
-
         </div>
 
-    </section>
+
+        <div class="home-image"></div>
+
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
 
-    <footer>
+<!-- =========================
+     SERVICES
+========================= -->
 
-        <div>
-            <strong>KLH & Associates</strong>
-            <p>Civil & Structural Engineering Consultants</p>
-        </div>
+<section class="section" id="services">
 
-        <div>
-            <p>01732 852212</p>
-            <p>postmaster@klhassociates.co.uk</p>
-        </div>
+<h2 class="section-heading">
+    Services
+</h2>
 
-        <div>
-            <p>
-                The Old Engine House<br>
-                Goblands Farm Business Park<br>
-                Court Lane, Hadlow<br>
-                Kent, TN11 0DP
-            </p>
-        </div>
 
-    </footer>
+
+<!-- TEMPORARY WORKS -->
+
+<div class="service" id="temporary">
+
+<h3 class="service-title">
+    Temporary Works
+</h3>
+
+<p>
+    One of our main sectors of work.
+</p>
+
+<p>
+    Senior personnel of the company have over 30 years experience in the
+    planning and design of temporary works.
+</p>
+
+<p>
+    Wherever possible depending on cost and suitability proprietary equipment
+    is utilised in our temporary works designs. We have a comprehensive
+    technical library of such equipment and plant.
+</p>
+
+<strong>
+    All types of design undertaken:
+</strong>
+
+<ul>
+
+<li>Cofferdams</li>
+<li>Propping to deep excavations</li>
+<li>Piling</li>
+<li>Bridges</li>
+<li>Bridge sliding techniques and slide path support structures</li>
+<li>Heavy lifts and Lifting techniques</li>
+<li>Top Down Construction</li>
+<li>Support of Facades</li>
+<li>Retaining Walls</li>
+<li>Pile static load test systems</li>
+<li>Temporary Jetties</li>
+<li>Offshore cellular Structures</li>
+<li>Pontoon Stability</li>
+<li>Falsework and scaffolding</li>
+<li>Piling frames</li>
+<li>Stability and adaptations to Jack-up-platforms</li>
+<li>Stability of structures during demolition</li>
+<li>Crash decks</li>
+<li>Jacking and bridge bearing renewal</li>
+<li>Slip forming</li>
+<li>Formwork</li>
+
+</ul>
+
+
+<strong>
+    Some major Temporary Works projects undertaken:
+</strong>
+
+<ul class="project-list">
+
+<li>Heavy Lifting systems.</li>
+<li>Two Tunnels under the Thames and Approaches</li>
+<li>Dublin Port Tunnel, Dublin</li>
+<li>London Underground and Railtrack Works.</li>
+<li>River Side House, Southwark, London, 13 Storey R.C Building</li>
+<li>Greenwich Peninsula Millennium Site London.</li>
+<li>King Post Pile Basement to Office Block Development.</li>
+<li>Harrods, London</li>
+<li>Silvertown Bypass, London Docklands.</li>
+<li>Tate Gallery, South Bank London</li>
+<li>Tower Crane Foundations</li>
+<li>99 Bishops Gate, City of London.</li>
+<li>New Bond Street.</li>
+<li>Kemsal Street, London.</li>
+<li>Cwn Valley, South Wales</li>
+<li>Basement, North London</li>
+<li>M2/A2 Motorway Improvement Scheme.</li>
+<li>Temporary Bridge, City Airport, London</li>
+<li>Manchester Ship Canal and Dock Cofferdams</li>
+<li>Homesley Bridge Cofferdams, Nr Manchester.</li>
+<li>Flood prevention, mobile suspended ground anchor rig platform, London</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- RAIL -->
+
+<div class="service" id="rail">
+
+<h3 class="service-title">
+    Rail
+</h3>
+
+<p>
+    KLH Consultancy involvement in rail works started in the 1980’s and covers
+    virtually all the main railway operators in the UK.
+</p>
+
+<p>
+    The majority of our designs have been in connection with Network Rail,
+    London Underground and the Docklands Light Railway.
+</p>
+
+<p>
+    Much of our work on many projects has required both the conception and
+    development of Temporary and Permanent works designs with the constraints
+    on designing components to suit live track conditions or to be carried out
+    during track possessions.
+</p>
+
+<p>
+    In conjunction with the compiling and submission of the necessary documents
+    such as Approval In Principle (AIP’s), Conceptual Design Statements (CDS)
+    and Safe Load Assessments. Providing design to suit the necessitated
+    detailed planning and the deriving of methods in close liaison with our
+    clients.
+</p>
+
+<p>
+    KLH Consultancy have been certified as Category 2 and 3 design checkers on
+    numerous rail projects.
+</p>
+
+<p>
+    The list of Rail projects relate to engineering work where KLH Consultancy
+    have provided either fully or in part the following services:
+</p>
+
+<ul>
+
+<li>
+    The design of temporary or permanent works and preparation of AIP’s,
+    CDS and Safe Load Assessments
+</li>
+
+<li>
+    Methodology of construction
+</li>
+
+<li>
+    Design CAT 2 or 3 checks
+</li>
+
+<li>
+    Design construction interface management.
+</li>
+
+<li>
+    Design adaptation to reduce risk together with value engineering appraisals.
+</li>
+
+</ul>
+
+<strong>
+    Rail Projects:
+</strong>
+
+<ul class="project-list">
+
+<li>CTRL Eurostar track, cofferdams close to track</li>
+<li>Docklands Light Railway, City Airport to Woolwich Arsenal extension</li>
+<li>Docklands Light Railway, City Airport Extension</li>
+<li>Docklands Light Railway, Lewisham Extension</li>
+<li>LUL Extension, Jubilee Line. Canning Town to Stratford section</li>
+<li>LUL Hainault Station Upgrade</li>
+<li>LUL, Rotherhithe Vent Shaft, South Bank</li>
+<li>LUL, Earls Court Station Modernisation</li>
+<li>LUL, Tubelines, Hampstead Station Upgrade.</li>
+<li>LUL, Refurbishment of Earls Court Station</li>
+<li>LUL, Acton Station.</li>
+<li>Network Rail, Waterson Street Bridge, London.</li>
+<li>Network Rail, Kingsland Road Viaduct, London.</li>
+<li>Networkrail, Farringdon Station, Thameslink</li>
+<li>Network Rail, Wembley Maintenance Depot, New Access</li>
+<li>Transport for London, East London Link</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- MARINE -->
+
+<div class="service" id="marine">
+
+<h3 class="service-title">
+    Marine & River Projects
+</h3>
+
+<p>
+    Civil – Marine and River Projects
+</p>
+
+<p>
+    A wide variety of design work coupled with providing a design service on
+    site on major projects has enabled the most suitable and economic methods
+    of construction to be implemented using inventive techniques.
+</p>
+
+<ul class="project-list">
+
+<li>Dover Harbour Ro-Ro Berths 5 & 6.</li>
+<li>Humber International Terminal.</li>
+<li>Scrabster Harbour Jetty.</li>
+<li>South Coast Reclamation Scheme, Brighton.</li>
+<li>Hoverport, Dover, Largest Hoverport in the World*</li>
+<li>Temporary jetty Cardiff Bay Marina.</li>
+<li>Devonport Jetty*.</li>
+<li>Jack-up-platforms</li>
+<li>Widening of Kingston Bridge, River Thames Kingston.</li>
+<li>Old BSC jetty on River Thames.</li>
+<li>King George V Lock Dam, Royal Docks, London.</li>
+<li>King George V Lock.</li>
+<li>River Medway, Millennium Projects, Bank Stabilisation.</li>
+<li>River Lee- David Stoker Flood gates.</li>
+
+</ul>
+
+<p>
+    <em>
+        *Designs for these works undertaken by KLH when an employee of
+        Mears Construction Ltd.
+    </em>
+</p>
+
+</div>
+
+
+
+<!-- BRIDGES -->
+
+<div class="service" id="bridges">
+
+<h3 class="service-title">
+    Bridges & Highways
+</h3>
+
+<p>
+    Highways design has been limited to small private developments. However,
+    over a kilometre of the A26 trunk road realignment and reconstruction has
+    been managed including the providing of all technical services.
+</p>
+
+<p>
+    Employer East Sussex C.C, Client Derek Greenwood Construction Ltd
+</p>
+
+<ul class="project-list">
+
+<li>M4, Bridges foundation anchors</li>
+<li>Network Rail, Wembley maintenance Depot, Bridge over tracks.</li>
+<li>New Medway Crossing, Discharge Platform.</li>
+<li>Tate and Lyle Factory</li>
+<li>Bridge Slide and elevated support.</li>
+<li>Thamesmead Bypass.</li>
+<li>Large Retail Park Complex, Tunbridge Wells</li>
+<li>Homesley 3-span bridge over river</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- BUILDINGS -->
+
+<div class="service" id="buildings">
+
+<h3 class="service-title">
+    Buildings
+</h3>
+
+<p>
+    Structural design for all types of building (excluding high rise), also
+    renovation and refurbishment work, inclusive of site surveys and
+    investigations.
+</p>
+
+<p>
+    A selection of projects include:
+</p>
+
+<ul>
+
+<li>Large Retail Park Complex, Tunbridge Wells</li>
+<li>3 Storey Offices to Residential Conversion, Twickenham.</li>
+<li>Structural Steel Canopy and Access Stairs to Silo</li>
+<li>Waste Distribution Centre, Offices London</li>
+<li>Coca-Cola-Schweppes Factory, Sidcup, Kent</li>
+<li>Office and Restaurant, additional Plant on Roof.</li>
+<li>LUL Cockfosters Depot. Structural alterations.</li>
+<li>Underpinning.</li>
+<li>
+    Internal structural alterations with Building Regulation Approvals,
+    various schemes.
+</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- SPECIAL PROJECTS -->
+
+<div class="service" id="special">
+
+<h3 class="service-title">
+    Special Projects & Piling
+</h3>
+
+<p>
+    Special projects are those where KLH Consultancy have been commissioned
+    to survey, develop and provide a designed solution or survey and report
+    to a particular one off situation.
+</p>
+
+<ul class="project-list">
+
+<li>Bristol Port Dock Aviation Fuel Pipelines</li>
+<li>1.8million gallon lake (reservoir).</li>
+<li>
+    Admiralty building Portsmouth Naval base. Removal of steel mast and
+    yard arm.
+</li>
+<li>National Portrait Gallery</li>
+<li>
+    Isle of Sheppey, independent design check on 20t exc. Frame support
+    and flood bank stability.
+</li>
+<li>A.F.I Ltd – Fruit distributors, Paddock Wood Kent.</li>
+<li>Teeside - London</li>
+<li>Demolition of 99 Bishopsgate London.</li>
+<li>Piling</li>
+<li>Ring main and Pumping station Chemical Works</li>
+<li>
+    Demolition of Pre-stressed bridge decks over the M4 South Wales
+</li>
+<li>
+    Report on sheet piled cofferdam construction South Wales
+</li>
+<li>Check on piling rig stability and components</li>
+<li>Tower Crane collapse, Hythe</li>
+<li>
+    DLR extensions over Millwall Docks London. Acoustic steel frame box
+    to 18t piling hammer.
+</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- RENEWABLE ENERGY -->
+
+<div class="service" id="renewable">
+
+<h3 class="service-title">
+    Renewable Energy
+</h3>
+
+<p>
+    Currently investigations and research is being undertaken in connection
+    with tidal energy.
+</p>
+
+<p>
+    Although a great deal of information and work has been carried out by
+    other organisations in this field, we are of the view that the particular
+    concept under review has not been developed or presented as a scheme
+    elsewhere.
+</p>
+
+</div>
+
+
+
+<!-- GEOTECHNICAL -->
+
+<div class="service" id="geotechnical">
+
+<h3 class="service-title">
+    Geotechnical
+</h3>
+
+<p>
+    Desk top studies of proposed sites for development is a service provided
+    by the geotechnical division. Such a service covers full topographical,
+    geological, contamination, environmental, flooding and drainage
+    assessments and also probable traffic flow increase with the likely
+    impact on the existing carriageway network.
+</p>
+
+<p>
+    We are able to offer full contamination and geotechnical investigations
+    through our in house partnering arrangements with the BdR consultancy
+    service situated within the same building as KLH Consultancy.
+</p>
+
+<p>
+    Interpretation of site investigation (SI) reports and consequent advice
+    to clients to develop the most suitable design to cope with the SI findings
+    is an exercise common to the majority of our commissions.
+</p>
+
+</div>
+
+
+
+<!-- MANAGEMENT -->
+
+<div class="service" id="management">
+
+<h3 class="service-title">
+    Project & Construction Management
+</h3>
+
+<p>
+    Project management and or construction management services to the
+    Employer/Client are available. Either for the traditional forms of
+    contract or Design and Construct forms of contract. Both pre and post
+    contract services are offered.
+</p>
+
+<p>
+    Such a facility arises because of the project and construction management
+    experience of the senior personnel within the company.
+</p>
+
+<ul>
+
+<li>
+    A26 Sussex. 1.0kilometer of road realignment, complete reconstruction
+    and drainage together with associated accommodation works.
+</li>
+
+<li>
+    Silvertown Bypass (viaduct), London
+</li>
+
+<li>
+    Harrods Store, London. Installation of 14 escalators.
+</li>
+
+<li>
+    Thames Barrier, Fire protection services and mains.
+</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- COSTS -->
+
+<div class="service" id="costs">
+
+<h3 class="service-title">
+    Estimating, Cost Plans & Value Engineering
+</h3>
+
+<p>
+    Economic and safe designs are at the forefront of all the services we
+    provide. Enhancing this is the capability to comprehensively assess the
+    costs for all types of Civil Engineering works.
+</p>
+
+<p>
+    The preparation, planning, bid management, procurement enquires,
+    temporary works and site on cost allowances are all part of any costing
+    exercise we undertake. Where necessary a full breakdown of the resources
+    in the cost estimate can be provided.
+</p>
+
+<p>
+    Many cost plans, value engineering and estimates have been produced by
+    the company with cash flow predictions.
+</p>
+
+<ul class="project-list">
+
+<li>Lowestoft dome WWTW, Lowestoft.</li>
+<li>New Industrial Complex, Tunbridge Wells.</li>
+<li>Humber International Terminal (marine works), Hull</li>
+<li>
+    Dartford Thames Crossing, London. West Tunnel deck replacement.
+</li>
+<li>Millennium Dome project, Greenwich, London</li>
+<li>Pumping Station, Dover</li>
+<li>Gyratory Highways Scheme, Isle of Jersey</li>
+<li>Rail Bridges reconstruction, Arundel</li>
+<li>Portobello Land Reclamation Scheme Brighton</li>
+<li>
+    DLR extension (6km) Canning Town to City Airport, London
+</li>
+<li>
+    DLR extension, King George V dock to Woolwich Arsenal Station,
+    2 bores under the Thames). London
+</li>
+<li>
+    London City Airport, extension of runway and temporary access bridge.
+</li>
+<li>
+    Surrey C.C. Advice and evaluation of Highway works for Direct Works
+    Department.
+</li>
+
+</ul>
+
+<h3>
+    International Projects
+</h3>
+
+<ul>
+
+<li>Military City, Saudi Arabia</li>
+<li>River Nile, Uganda. Hydro Electric scheme.</li>
+<li>Viaduct across the Straits of Mumbai, India</li>
+<li>N11, Road and bridges. Ireland</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- CONTRACTUAL -->
+
+<div class="service" id="contractual">
+
+<h3 class="service-title">
+    Contractual Consultancy
+</h3>
+
+<p>
+    Contractual advice, together with both the submission of contractual
+    claims and in other cases the defence of claims has been a feature of
+    our services for many years.
+</p>
+
+<p>
+    Assistance in the preparation of civil engineering contractual claims
+    have been undertaken for major International Contractors.
+</p>
+
+<p>
+    Comprehensive advice, contractual correspondence, compilation and the
+    complete submission of claims have been undertaken successfully for a
+    number of clients. These claims have generally been associated with the
+    ICE 5th and 6th Editions of Contract, the NEC for of contract regarding
+    compensation events, various JCT Forms of Contract, The Red and Green
+    forms of Petro-chemical Conditions of Contract, and the ad-hoc
+    Construction Management forms of contract, together with the associated
+    sub-contract terms and conditions.
+</p>
+
+<p>
+    Claims, advice and services have encompassed civil road, rail, bridge,
+    drainage, marine and fire protection services.
+</p>
+
+<p>
+    Since the 1980’s KLH Consultancy has played a major part in assisting
+    or resolving over a dozen contract claims. In addition KLH has been
+    nominated as an expert witness on two occasions.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     POLICIES
+========================= -->
+
+<section class="section" id="policies">
+
+<h2 class="section-heading">
+    Policies
+</h2>
+
+<ul>
+
+<li>Design Quality Policy</li>
+<li>Health and Safety Policy</li>
+<li>Personnel Equal Opportunities Policy</li>
+<li>Sustainability Policy</li>
+<li>Environmental Policy</li>
+
+</ul>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="section" id="contact">
+
+<h2 class="section-heading">
+    Contacts
+</h2>
+
+<div class="contact-layout">
+
+<div>
+
+<p>
+<strong>
+Location of Address (registered office):
+</strong>
+</p>
+
+<p>
+The Old Engine House<br>
+Goblands Farm Business Park<br>
+Court Lane<br>
+Hadlow<br>
+Kent<br>
+U.K<br>
+TN11 0DP
+</p>
+
+<p>
+Tel: 01732 852212
+</p>
+
+<p>
+Fax: 01732 852218
+</p>
+
+<p>
+Email: postmaster@klhassociates.co.uk
+</p>
+
+<p>
+Contact Name: Keith Harrison
+</p>
+
+</div>
+
+
+<div class="map">
+    KLH Consultancy<br>
+    The Old Engine House
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<footer>
+    KLH Consultancy — Civil and Structural Engineering Consultants
+</footer>
+
+
+</div>
 
 </body>
 </html>
